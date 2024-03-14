@@ -1,0 +1,17 @@
+# Use Node.js version 20.11.1 as base image
+FROM node:20.11.1
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy only the package.json and yarn.lock files
+COPY package.json yarn.lock ./
+
+# Install dependencies
+RUN yarn
+
+# Expose port 7744 (usando el mismo puerto que en tu docker-compose.yml)
+EXPOSE 7744
+
+# Command to run the application
+CMD ["yarn", "dev"]

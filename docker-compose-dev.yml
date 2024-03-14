@@ -1,0 +1,13 @@
+
+services:
+  web:
+    build:
+      dockerfile: Dockerfile-dev  # Utilizar el Dockerfile-dev para el build
+    ports:
+      - "7744:7744"
+    volumes:
+      - .:/app  # Montar el directorio actual en el contenedor en /app
+    environment:
+      - NODE_ENV=development  # Cambiar el valor de NODE_ENV
+
+    command: yarn dev

@@ -1,9 +1,13 @@
 <template>
+  <div class="main-wrapper">
+
   <div class="main">
     <cv-settings id="settings" class="settings"></cv-settings>
     <cv-preview></cv-preview>
 
   </div>
+</div>
+
 </template>
 
 <script lang="ts">

@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 
 # Install all dependencies
-RUN yarn install
+RUN yarn
 
 # Build the application
 RUN yarn build
@@ -17,6 +17,4 @@ RUN yarn generate
 # Expose port 7744
 EXPOSE 7744
 
-# Command to run the application
-CMD ["yarn", "start"]
-    
+CMD yarn generate && yarn start

@@ -1,9 +1,11 @@
-version: '3'
-
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "7744:7744"
     volumes:
       - .:/app
+    environment:
+      - NODE_ENV=production  # Cambiar el valor de NODE_ENV

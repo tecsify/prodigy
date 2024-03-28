@@ -146,9 +146,13 @@ export function useCvState() {
         return; // Salir de la función si el lenguaje no es válido
       }
 
+
+      console.log(lengua, lenguaje);
+
       const parsedCvSettings = JSON.parse(cvSettings);
       const data = { source_lenguage: lenguaje, lengua: lengua, ...parsedCvSettings };
-      const response = await fetch('http://localhost:5000/traducir', {
+      console.log(data);
+      const response = await fetch('http://backend:5100/backend/traducir', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

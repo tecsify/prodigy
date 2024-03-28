@@ -144,44 +144,6 @@ export default Vue.extend({
     },
 
 
-    async alertTraduccion() {
-
-      let el = document.getElementById('swalHTML');
-      let widthPercentage = window.innerWidth <= 600 ? '80%' : '50%'; // Cambiar el tamaño dependiendo del ancho de la ventana
-      if (!el) {
-        console.error('Elemento HTML no encontrado');
-        return;
-      }
-
-      try {
-        await Swal.fire({
-          title: this.$i18n.t('traducir-a').toString(),
-          html: el.innerHTML,
-          showCancelButton: false,
-          cancelButtonText: 'Cancelar',
-          showConfirmButton: false,
-          footer: `
-                <div class="form__section flex flex-col px-8 mx-4">
-                    <button id="customCancelButton" class="swal2-cancel swal2-styled" aria-label="Cancelar" type="button" style="display: inline-block;">Cancelar</button>
-                </div>`,
-          customClass: {
-            container: 'traduccion-swal-modal'
-          }, didOpen: () => {
-            const cancelButton = document.getElementById('customCancelButton');
-            if (cancelButton) {
-              cancelButton.addEventListener('click', () => {
-                Swal.close();
-              });
-            } else {
-              console.error('Botón de cancelar no encontrado');
-            }
-          }
-        });
-      } catch (error) {
-        console.error('Error al mostrar el cuadro de diálogo:', error);
-      }
-    }
-
     // getCroppedImage(cropper: any) {
     //   // Obtener la imagen recortada como una URL de datos
     //   this.croppedImage = this.cropper.getCroppedCanvas().toDataURL();
@@ -360,10 +322,26 @@ export default Vue.extend({
 
       <ModalInput :titulo="titulo" :nombre="nombre" :education="education" :experience="experience" ref="ModalInput">
       </ModalInput>
+      <div class="container max-w-screen-lg mx-auto flex justify-center mb-4 mx-4">
+        <button
+          class="form__btn form__btn--ghost"
+          type="button"
+          @click="resetForm"
+        >
+          {{ $t("see-example") }}
+        </button>
+        <button
+          class="form__btn form__btn--ghost"
+          type="button"
+          @click="clearForm"
+        >
+          {{ $t("clear-settings") }}
+        </button>
+      </div>
 
       <!-- PHOTO -->
       <fieldset class="form__section grid gap-3">
-        <expansion-panel :panel-name="$t('ai')">
+        <expansion-panel :panel-name="$t('photo-profile')">
           <template v-slot:title>
             <legend class="form__legend">📸 {{ $t('photo-profile') }}</legend>
           </template>

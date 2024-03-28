@@ -379,7 +379,7 @@ p {
 }
 
 .cv {
-  @apply flex text-gray-800 drop-shadow-2xl text-sm font-normal mt-6;
+  @apply flex text-gray-800 shadow-2xl text-sm font-normal mt-6;
   width: 21cm;
   height: 29.69cm;
   min-width: 21cm;

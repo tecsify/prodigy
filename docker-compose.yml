@@ -8,4 +8,25 @@ services:
     volumes:
       - .:/app
     environment:
-      - NODE_ENV=production  # Cambiar el valor de NODE_ENV
+      - NODE_ENV=production # Cambiar el valor de NODE_ENV
+    depends_on:
+      - backend
+      
+  backend:
+    build:
+      context: ./backend
+    environment:
+      - SECRET_KEY=TECSIFYPRODIGY!
+    ports:
+      - "5100"
+    volumes:
+      - ./backend:/backend
+
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      - web

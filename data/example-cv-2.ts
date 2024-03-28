@@ -1,90 +1,74 @@
-import { Cv } from '~/types/cvfy';
+import { Cv, LEVELS } from '~/types/cvfy';
 
-export const cvSettingTemplate: Cv = {
-  jobTitle: 'Matemática, escritora e inventora',
-  name: 'Ada ',
-  photo: 'https://www.bbvaopenmind.com/wp-content/uploads/2015/12/Ada_Lovelace_Chalon_portrait-1-1024x1024-1-e1583406754141.jpg',
-  lastName: 'Lovelace',
+export const cvSettingTemplate2: Cv = {
+  jobTitle: 'Informático, matemático y filósofo',
+  name: 'Alan ',
+  photo: require('@/assets/photos/cv2.webp'),
+  lastName: 'Turing',
   email: 'contacto@tecsify.com',
-  location: 'Reino Unido',
-  phoneNumber: '0101010011001',
+  location: 'Londres, Reino Unido',
+  phoneNumber: '2020100111',
   aboutme:
-"Soy Ada Lovelace, una matemática y escritora británica del siglo XIX, conocida por ser la primera programadora de la historia y por mi trabajo con Charles Babbage en la creación de la Máquina Analítica, un precursor de los ordenadores modernos, soy muy apasionada por las matemáticas y siempre he estado interesada en explorar cómo la tecnología puede mejorar nuestra vida diaria.",
-  jobSkills: ['Microsoft', 'Word', 'Excel', 'Tecsify'],
-  softSkills: ['Positivity', 'Leadership', 'Public Speaking'],
-  languages: [{ lang: 'English', level: '100%' }],
+    "Soy Alan Turing, un matemático, informático y filósofo británico del siglo XX, conocido por ser uno de los pioneros en el campo de la informática. Fui fundamental en el desarrollo de la máquina de Turing, un precursor de los modernos ordenadores",
+  jobSkills: ['Criptografía', 'Inteligencia Artificial', 'Tecsify'],
+  softSkills: ['Innovación', 'Creatividad', 'Lógica'],
+  languages: [{ lang: 'Inglés', level: LEVELS[4] }],
   linkedin: '',
   twitter: '',
   github: '',
   website: 'www.Tecsify.com',
   education: [
     {
-      title: 'Educada en casa por mi mamá',
-      location: 'Reino Unido',
-      from: new Date(1832, 9, 1),
-      to: new Date(1842, 4, 1),
+      title: 'Licenciado en matemáticas',
+      location: 'Universidad de Cambridge',
+      from: new Date(1930, 9, 1),
+      to: new Date(1934, 4, 1),
       current: false,
-      summary: 'Mi madre (quién también fué una matemática) me educó, además, cuando tenía diecisiete años, mis habilidades matemáticas comenzaron a surgir, y mi interés por las matemáticas dominó la mayor parte de mi vida adulta',
+      summary: 'Obtuve mi licenciatura en matemáticas en la Universidad de Cambridge, donde comencé a destacar en el campo de la lógica y las matemáticas aplicadas.',
+    },
+    {
+      title: 'Doctorado (PhD)',
+      location: 'Universidad de Princeton, en Nueva Jersey',
+      from: new Date(1936, 9, 1),
+      to: new Date(1938, 4, 1),
+      current: false,
+      summary: 'Continué mis estudios en matemáticas y lógica en la Universidad de Princeton, donde desarrollé aún más mis habilidades en el campo de la teoría de la computación.',
     },
   ],
   work: [
     {
-      title: 'Primera programadora de la historía',
-      location: 'Reino Unido',
-      from: new Date(1841, 1, 1),
-      to: new Date(1861, 1, 1),
-      current: true,
-      summary: 'Realmente no tuve una carrera profesional tradicional en el sentido moderno, mi trabajo con la Máquina Analítica sentó las bases para el futuro desarrollo de la tecnología informática y la programación.'
+      title: 'Criptólogo',
+      location: 'Ejército británico, Bletchley Park',
+      from: new Date(1939, 1, 1),
+      to: new Date(1945, 1, 1),
+      current: false,
+      summary: 'Durante la Segunda Guerra Mundial, trabajé como criptólogo en Bletchley Park, donde desempeñé un papel crucial en la decodificación de los códigos enemigos, contribuyendo significativamente a la victoria aliada.',
     },
-    {
-      title: 'Inventora de la máquina analítica',
-      location: 'City of Pawnee, Indiana',
-      from: new Date(1841, 1, 1),
-      to: new Date(1842, 1, 1),
-      current: true,
-      summary: 'Realmente no tuve una carrera profesional tradicional en el sentido moderno, mi trabajo con la Máquina Analítica sentó las bases para el futuro desarrollo de la tecnología informática y la programación.'
-    },
-
   ],
   projects: [
     {
-      title: 'Maquina analitica',
+      title: 'Máquina de Turing',
       location: 'Londres, Inglaterra',
-      from: new Date(2009, 1, 1),
-      to: new Date(2012, 1, 1),
+      from: new Date(1936, 1, 1),
+      to: new Date(1937, 1, 1),
       current: true,
-      summary: `- Sed ut lorem viverra urna malesuada interdum in ut risus.
-- Duis at sem non justo aliquam iaculis.
-- Quisque lobortis nibh non turpis interdum ornare.
-- Sed et diam nec arcu tempor suscipit sit amet at tellus.
-- Duis quis diam imperdiet, pharetra lacus eget, fringilla odio.`,
+      summary: 'Desarrollé la máquina de Turing, un dispositivo teórico que formalizó el concepto de algoritmo y computación. Esta máquina sentó las bases de la informática moderna.',
+    },
+    {
+      title: 'Máquina Bombe',
+      location: 'Londres, Inglaterra',
+      from: new Date(1939, 1, 1),
+      to: new Date(1940, 1, 1),
+      current: true,
+      summary: 'Dirigí el proyecto para desarrollar la Máquina Bombe en Bletchley Park, una máquina electromecánica utilizada para descifrar códigos alemanes durante la Segunda Guerra Mundial.',
     },
   ],
   displayEducation: true,
-  displayProjects: false,
-  activeColor: '#030399',
+  displayProjects: true, // Cambiamos esto a true para que se muestren los proyectos
+  activeColor: '#065F46',
+  nameFontSize: "235",
+  photoStyle: "25",
+  photoBorder: false,
+  photoBnW: false,
 };
 
-export const cvSettingsEmptyTemplate: Cv = {
-  jobTitle: '',
-  photo: '',
-  name: '',
-  lastName: '',
-  email: '',
-  location: '',
-  phoneNumber: '',
-  aboutme: '',
-  jobSkills: [],
-  softSkills: [],
-  languages: [],
-  linkedin: '',
-  twitter: '',
-  github: '',
-  website: '',
-  education: [],
-  work: [],
-  projects: [],
-  displayEducation: true,
-  displayProjects: false,
-  activeColor: '#030399',
-};

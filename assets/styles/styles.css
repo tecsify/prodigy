@@ -1,9 +1,42 @@
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+  .traduccion-swal-modal {
+    width: 85% !important;
+  }
+}
+
+/* Estilos para tablets */
+@media (min-width: 601px) and (max-width: 768px) {
+  .traduccion-swal-modal  {
+    width: 80% !important;
+  }
+}
+
+/* Estilos para pantallas grandes (PC) */
+@media (min-width: 769px) {
+  .traduccion-swal-modal {
+    width: 90% !important;
+  }
+}
+
+
 @media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   #settings {
     display: none;
     box-shadow: none;
     z-index: 0;
   }
+
   #cv {
     display: block;
     width: 100%;
@@ -12,6 +45,7 @@
   }
 
   #cv .cv {
+    border-radius: 0 !important;
     margin: 0;
     border: none;
     padding: 0;
@@ -24,6 +58,11 @@
   }
 }
 
+body {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+}
+
 :root {
   --bg-color: #f3f4f6;
   --primary: #030399;
@@ -34,20 +73,64 @@
   --purple-darker: #4C1D95;
   --indigo: #3730A3;
   --indigo-darker: #312E81;
-  --blue: #1E40AF;
-  --blue-darker: #1E3A8A;
+  --grey: #535252;
+  --grey-darker: #535252;
   --green: #065F46;
   --green-darker: #064E3B;
   --yellow: #F59E0B;
   --yellow-darker: #D97706;
-  --red: #DC2626;
+  --red: #770B0E;
   --red-darker: #B91C1C;
   --black: #1F2937;
   --black-darker: #111827;
 }
 
 
-.form__legend{
+.form__legend {
   font-weight: 500 !important;
   color: #030399 !important;
 }
+
+.sombra {
+  transition: 0.10s all ease-in-out;
+}
+
+.zoom-image {
+  transition: 0.20s all ease-in-out;
+}
+
+.zoom-menos {
+  transition: 0.30s all ease-in-out;
+}
+
+.zoom-menos-menos {
+  transition: 0.20s all ease-in-out;
+}
+
+/* Heart beat animation */
+@keyframes beat {
+  to {
+    transform: scale(0.985);
+  }
+}
+
+
+.zoom-menos:hover {
+  transform: scale(0.885);
+}
+
+.zoom-menos-menos:hover {
+  transform: scale(0.945);
+}
+
+.sombra:hover {
+  transform: scale(1.005);
+  box-shadow: 0 0 11px rgba(3, 3, 153, 0.3);
+  border: rgba(3, 3, 153, 0.8)
+}
+
+.sombra:hover .zoom-image {
+  transform: rotate(-0.5deg) scale(1.05);
+}
+
+

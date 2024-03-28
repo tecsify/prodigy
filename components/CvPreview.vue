@@ -1,20 +1,20 @@
 <template>
-  <div id="cv" class="font-normal relative flex justify-center w-full bg-white" style="overflow: auto !important;">
+  <div id="cv" ref="cvTemplate" class="font-normal relative flex justify-center w-full bg-white" style="overflow: auto !important;">
     <div tabindex="0" aria-label="CV preview" :class="['cv', 'bg-white', { blur: isLoading }]">
       <div class="cv__side w-1/3 cv__color-selected">
         <div class="container">
-          <img class="cv__job-photo center-cropped" alt="Foto de perfil" id="photocv" :src="formSettings.photo" />
-        </div>
 
-        <br />
-        <h2 class="cv__name">
+          <img :class="['cv__job-photo center-cropped', {'photo-border': formSettings.photoBorder, 'grayscale': formSettings.photoBnW }]" alt="Foto de perfil" id="photocv" :src="formSettings.photo"  :style="{ borderRadius: (parseInt(formSettings.photoStyle) +'%')}" />
+        </div>
+        <br>
+        <h2 class="cv__name" :style="{ fontSize: (parseInt(formSettings.nameFontSize) / 100) +'rem', lineHeight: (parseInt(formSettings.nameFontSize) / 95) + 'rem'} ">
           {{ formSettings.name }} {{ formSettings.lastName }}
         </h2>
+
         <br />
-        <hr />
+
         <h3 class="cv__job-title">{{ formSettings.jobTitle }}</h3>
-        <hr />
-        <hr />
+
 
         <!-- CONTACT -->
         <section class="cv__section">
@@ -47,9 +47,7 @@
         <section class="cv__section">
           <h4 class="cv__section-title">{{ $t('professional-skills') }}</h4>
           <ul class="cv__tags">
-            <li v-for="skill in formSettings.jobSkills" :key="`preview${skill}`" class="cv__tag">
-              {{ skill }}
-            </li>
+            <li v-for="skill in formSettings.jobSkills" :key="`preview${skill}`" class="cv__tag">{{ skill }}</li>
           </ul>
         </section>
         <!-- //PROFESIONAL SKILLS -->
@@ -58,23 +56,31 @@
           <h4 class="cv__section-title">{{ $t('soft-skills') }}</h4>
           <ul class="cv__list">
             <li v-for="skill in formSettings.softSkills" :key="`preview${skill}`">
-              {{ skill }}
+             {{ skill }}
             </li>
           </ul>
         </section>
         <!-- // SOFT SKILLS -->
         <!-- LANGUAGES -->
         <section class="cv__section">
-          <h4 class="cv__section-title">{{ $t('languages') }}</h4>
-          <ul class="cv__bar">
-            <li v-for="lang in formSettings.languages" :key="`preview${lang.lang}`">
-              {{ lang.lang + " - (" + lang.level + ")" }}
-              <div class="cv__bar-level" :style="{ width: '100%' }">
-                <span class="cv__bar-level cv__bar-level--in" :style="{ width: lang.level }"></span>
-              </div>
+          <h4 class="cv__section-title">
+            {{ $t("languages") }}
+          </h4>
+          <ul>
+            <li
+              v-for="lang in formSettings.languages"
+              :key="`preview${lang.lang}`"
+              class="flex justify-between pr-4"
+            >
+              <span>{{ lang.lang }}</span>
+              <span class="font-light">{{ $t(lang.level) }}</span>
             </li>
           </ul>
         </section>
+
+
+
+
         <!-- // LANGUAGES -->
         <!-- SOCIAL -->
         <section class="cv__section">
@@ -105,7 +111,7 @@
               <svg class="cv__icon">
                 <use href="@/assets/sprite.svg#website"></use>
               </svg>
-              <a target="_blank" rel="noopener" :href="formSettings.website">{{
+              <a target="_blank" rel="noopener" :href="'https://' + formSettings.website">{{
       formSettings.website
     }}</a>
             </div>
@@ -238,6 +244,10 @@ import Vue from 'vue';
 import { useContext, computed } from '@nuxtjs/composition-api';
 import { CvEvent } from '~/types/cvfy';
 import { useCvState } from '~/data/useCvState';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import cv from '~/pages/cv.vue';
+
 
 export default Vue.extend({
   name: 'CvPreview',
@@ -290,6 +300,7 @@ export default Vue.extend({
       const dateObj = new Date(date);
       return dateObj.toLocaleDateString(context.app.i18n.locale, options);
     }
+    
 
     return {
       formSettings,
@@ -302,6 +313,64 @@ export default Vue.extend({
       formatDate,
     };
   },
+
+
+  methods: {
+    calculateFontSize(text: any) {
+      // Aquí definimos la lógica para calcular el tamaño del texto
+      const baseFontSize = 2.1; // Tamaño de fuente base
+      var calculatedSize = baseFontSize; // Longitud máxima del texto antes de reducir el tamaño
+      const textLength = text.length;
+      if (textLength < 13){
+        calculatedSize = baseFontSize * 1.01 // Ajusta según tus necesidades
+      }else{
+        calculatedSize = baseFontSize - (textLength * 0.009); // Ajusta según tus necesidades
+      }
+      return `${calculatedSize}rem`; // Devolvemos el tamaño de fuente calculado como una cadena con "px"
+    }
+  }
+
+ /*  mounted() {
+    const doc = new jsPDF({
+    orientation: 'portrait', // O 'landscape' si prefieres
+    unit: 'px',
+    format: 'a4' // Cambia al tamaño de página que necesites
+  });
+  
+  // Selecciona el elemento .cv
+  const cvf = document.querySelector('.cv');
+  
+  cvf.style.marginTop = "0";
+
+  cvf.style.marginRight = "0";
+  cvf.style.padding = "0";
+  cvf.style.width = "100%";
+  cvf.style.border = "none";
+  cvf.style.marginLeft = "-199px";
+  cvf.style.boxShadow = 'none'; // Cambio aquí a boxShadow
+  cvf.style.scale = '0.8025'; // Cambio aquí a boxShadow
+  const scaleFactor = 0.98  ; 
+   // Escala las fuentes dentro del elemento .cv
+  const textElements = cvf.querySelectorAll('p, h1, h4, h5, h6, div, section, span, hr, br, li'); // Selección de elementos de texto
+  textElements.forEach(element => {
+    if (element.tagName === 'LI'){
+      console.log("ASDASD")
+    element.style.fontSize = `${scaleFactor * 100}%`; 
+      element.style.paddingTop = "0px";
+    }else{
+    element.style.fontSize = `${scaleFactor * 100}%`; 
+    element.style.letterSpacing = '0.042em'; // Escala el tamaño de las fuentes
+    element.style.lineHeight = '1.9em'; // Escala el tamaño de las fuentes
+  }
+  });
+  // Agrega el contenido del documento al PDF
+  doc.html(cvf, {
+    callback: function(pdf) {
+      pdf.save('cv.pdf');
+    }
+  });
+} */
+
 });
 </script>
 <style lang="postcss" scoped>
@@ -310,7 +379,7 @@ p {
 }
 
 .cv {
-  @apply flex text-gray-800 shadow-lg text-sm font-normal mt-6;
+  @apply flex text-gray-800 drop-shadow-2xl text-sm font-normal mt-6;
   width: 21cm;
   height: 29.69cm;
   min-width: 21cm;
@@ -322,6 +391,7 @@ p {
   transform: scale(0.4);
   transform-origin: top;
   overflow-y: hidden;
+  border-radius: 1.5%;
 
   @media screen and (min-width: 425px) {
     transform: scale(0.65);
@@ -336,22 +406,25 @@ p {
   }
 
   &__side {
-    @apply px-6 py-10 bg-gray-100 bg-opacity-100;
+    @apply px-6 py-8 bg-gray-100 bg-opacity-100;
   }
 
   &__job-photo {
-    border-radius: 100%;
-    max-height: 13rem;
-    border: 0.2rem white solid;
+    border-radius: 15%;
+    max-height: 15rem;
+    min-height: 13.4rem;
+    @apply mb-2;
   }
 
   &__name {
-    @apply text-3xl uppercase font-bold leading-8 mb-3 tracking-wide;
+    @apply uppercase font-bold leading-8;
     color: #fff;
   }
 
   &__job-title {
-    @apply text-xl uppercase;
+    @apply uppercase;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
   }
 
   &__section {
@@ -410,58 +483,10 @@ p {
     color: var(--primary) !important;
   }
 
-  &__list {
-    @apply font-light mt-1;
-    list-style: none;
-    padding: 0;
-    margin: 0;
 
-    li {
-      padding-left: 1em;
-      text-indent: -1em;
-    }
-
-    li:first-child {
-      @apply mt-1;
-    }
-
-    li::before {
-      content: '\2022';
-      padding-right: 0.2em;
-      color: var(--primary);
-    }
-  }
-
-  &__bar {
-    border-color: var(--primary) !important;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    --border-opacity: 0 !important;
-
-    li {
-      @apply flex flex-col;
-    }
-
-    li+li {
-      @apply mt-3;
-    }
-  }
-
-  &__bar-level {
-    @apply rounded-full mr-2;
-    position: relative;
-    height: 0.5rem;
-
-    &--in {
-      position: absolute;
-      display: inline-block;
-      background-color: #fff;
-    }
-  }
 
   &__main {
-    @apply px-8 py-10;
+    @apply px-8 py-8;
   }
 
   &__event {
@@ -471,11 +496,19 @@ p {
   }
 
   &__bar {
-    @apply my-5 border-gray-100 border-2;
+    @apply my-5 border-2;
   }
 }
 
 .blur {
   filter: blur(5px);
+}
+
+.photo-border{
+  border: 0.25rem white solid;
+}
+
+.grayscale {
+  filter: grayscale(100%); /* Aplicar efecto de blanco y negro */
 }
 </style>

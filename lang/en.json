@@ -1,5 +1,5 @@
 {
-    "welcome-msg": "Welcome to Tecsify Prodigy",
+    "welcome-msg": "Welcome to",
     "personal-data-instruction": "Here, you should provide your personal information and a brief description of your outstanding professional skills, relevant achievements, and personal qualities that make you an ideal candidate for the position.",
     "es-name": "Spanish",
     "en-name": "English",
@@ -59,7 +59,19 @@
     "see-example": "See an example",
     "ai": "Artificial Intelligence",
     "delete-photo": "I do not want to use my photo",
-    "photo-profile": "Profile picture"
-
-
-}
+    "photo-profile": "Profile picture",
+    "nativo": "Native",
+    "fluido": "Fluent",
+    "avanzado": "Advanced",
+    "intermedio": "Intermediate",
+    "basico": "Basic",
+    "nameFontSize-label": "Name font size",
+    "photo-border-label": "Add border to photo",
+    "photo-style-label": "Change photo style",
+    "photo-bw-label": "Convert photo to black and white",
+    "photo-bw-text": "By converting your photo to black and white, you eliminate potential distractions caused by vibrant colors, keeping the reader's focus on the essential content of your resume.",
+    "photo-info": "Including a profile photo in your resume helps personalize it and makes you more easily memorable to employers. Additionally, it provides a positive initial impression and conveys professionalism and confidence.",
+    "traducir-a": "Select language",
+    "cancelar": "Cancel",
+    "traduccion-disclaimer": "Your resume will be automatically translated by our artificial intelligence. We recommend doing a quick review of the translation to ensure it accurately captures your skills and experience."
+    }

@@ -3,7 +3,7 @@
 
   <div class="main">
     <cv-settings id="settings" class="settings"></cv-settings>
-    <cv-preview></cv-preview>
+    <cv-preview ></cv-preview>
 
   </div>
 </div>

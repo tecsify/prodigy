@@ -1,5 +1,5 @@
 {
-    "welcome-msg": "Bem-vindo ao Tecsify Prodigy",
+    "welcome-msg": "Bem-vindo ao",
     "personal-data-instruction": "Aqui, você deve fornecer seus dados pessoais e uma breve descrição de suas habilidades profissionais destacadas, realizações relevantes e qualidades pessoais que o tornam um candidato ideal para a vaga",
     "es-name": "Espanhol",
     "en-name": "Inglês",
@@ -59,8 +59,19 @@
     "see-example": "Ver um exemplo",
     "ai": "Inteligência Artificial",
     "delete-photo": "Não desejo usar minha foto",
-    "photo-profile": "Foto de perfil"
-
-
-
-}
+    "photo-profile": "Foto de perfil",
+    "nativo": "Nativo",
+    "fluido": "Fluente",
+    "avanzado": "Avançado",
+    "intermedio": "Intermediário",
+    "basico": "Básico",
+    "nameFontSize-label": "Tamanho da fonte do nome",
+    "photo-border-label": "Adicionar borda à foto",
+    "photo-style-label": "Alterar estilo da foto",
+    "photo-bw-label": "Converter foto para preto e branco",
+    "photo-bw-text": "Ao converter sua foto para preto e branco, você elimina possíveis distrações causadas por cores vibrantes, mantendo o foco do leitor no conteúdo essencial do seu currículo.",
+    "photo-info": "Incluir uma foto de perfil no seu currículo ajuda a personalizá-lo e torna você mais facilmente memorável para os empregadores. Além disso, fornece uma impressão inicial positiva e transmite profissionalismo e confiança.",
+    "traducir-a": "Selecione o idioma",
+    "cancelar": "Cancelar",
+    "traduccion-disclaimer": "Seu currículo será traduzido automaticamente por nossa inteligência artificial. Recomendamos fazer uma rápida revisão da tradução para garantir que ela capture com precisão suas habilidades e experiência."
+    }

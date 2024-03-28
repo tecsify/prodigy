@@ -1,5 +1,5 @@
 {
-    "welcome-msg": "Willkommen bei Tecsify Prodigy",
+    "welcome-msg": "Willkommen bei",
     "personal-data-instruction": "Hier sollten Sie Ihre persönlichen Daten sowie eine kurze Beschreibung Ihrer herausragenden beruflichen Fähigkeiten, relevanten Erfolge und persönlichen Eigenschaften angeben, die Sie zum idealen Kandidaten für die Stelle machen.",
     "es-name": "Spanisch",
     "en-name": "Englisch",
@@ -59,6 +59,19 @@
     "see-example": "Ein Beispiel sehen",
     "ai": "Künstliche Intelligenz",
     "delete-photo": "Ich möchte mein Foto nicht verwenden",
-    "photo-profile": "Profilbild"
-    
+    "photo-profile": "Profilbild",
+    "nativo": "Muttersprachler",
+    "fluido": "Fließend",
+    "avanzado": "Fortgeschritten",
+    "intermedio": "Mittelstufe",
+    "basico": "Grundkenntnisse",
+    "nameFontSize-label": "Schriftgröße des Namens",
+    "photo-border-label": "Rahmen um Foto hinzufügen",
+    "photo-style-label": "Foto-Stil ändern",
+    "photo-bw-label": "Foto in Schwarzweiß umwandeln",
+    "photo-bw-text": "Durch die Umwandlung Ihres Fotos in Schwarzweiß eliminieren Sie potenzielle Ablenkungen durch lebendige Farben und lenken die Aufmerksamkeit des Lesers auf den wesentlichen Inhalt Ihres Lebenslaufs.",
+    "photo-info": "Das Hinzufügen eines Profilfotos zu Ihrem Lebenslauf hilft, ihn zu personalisieren und macht Sie für Arbeitgeber leichter merkbar. Darüber hinaus vermittelt es einen positiven ersten Eindruck und signalisiert Professionalität und Selbstbewusstsein.",
+    "traducir-a": "Sprache auswählen",
+    "cancelar": "Abbrechen",
+    "traduccion-disclaimer": "Ihr Lebenslauf wird automatisch von unserer künstlichen Intelligenz übersetzt. Wir empfehlen, die Übersetzung kurz zu überprüfen, um sicherzustellen, dass sie Ihre Fähigkeiten und Erfahrungen genau wiedergibt."
 }

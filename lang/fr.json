@@ -1,5 +1,5 @@
 {
-    "welcome-msg": "Bienvenue chez Tecsify Prodigy",
+    "welcome-msg": "Bienvenue chez",
     "personal-data-instruction": "Ici, vous devez fournir vos données personnelles et une brève description de vos compétences professionnelles remarquables, de vos réalisations pertinentes et de vos qualités personnelles qui font de vous un candidat idéal pour le poste.",
     "es-name": "Espagnol",
     "en-name": "Anglais",
@@ -59,8 +59,19 @@
     "see-example": "Voir un exemple",
     "ai": "Intelligence Artificielle",
     "delete-photo": "Je ne veux pas utiliser ma photo",
-    "photo-profile": "Photo de profil"
-    
-
-
-}
+    "photo-profile": "Photo de profil",
+    "nativo": "Nativo",
+    "fluido": "Fluente",
+    "avanzado": "Avançado",
+    "intermedio": "Intermediário",
+    "basico": "Básico",
+    "nameFontSize-label": "Taille de la police du nom",
+    "photo-border-label": "Ajouter une bordure à la photo",
+    "photo-style-label": "Changer le style de la photo",
+    "photo-bw-label": "Convertir la photo en noir et blanc",
+    "photo-bw-text": "En convertissant votre photo en noir et blanc, vous éliminez les distractions potentielles causées par les couleurs vives, en maintenant l'attention du lecteur sur le contenu essentiel de votre CV.",
+    "photo-info": "Inclure une photo de profil dans votre CV contribue à le personnaliser et vous rend plus facilement mémorable pour les employeurs. De plus, cela donne une impression initiale positive et transmet du professionnalisme et de la confiance.",
+    "traducir-a": "Sélectionner la langue",
+    "cancelar": "Annuler",
+    "traduccion-disclaimer": "Votre CV sera automatiquement traduit par notre intelligence artificielle. Nous vous recommandons de vérifier rapidement la traduction pour vous assurer qu'elle reflète avec précision vos compétences et votre expérience."
+    }

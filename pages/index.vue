@@ -8,12 +8,12 @@
 
 
 
-    <section id="seccionbusqueda" class="bg-gray-100 py-4 ">
+    <section id="seccionbusqueda" class="bg-gray-100 mt-4 py-4">
       
       <div class="container mx-auto px-4 lg:px-2 py-8 lg:py-16 max-w-screen-lg">
                 <div class="flex flex-col lg:flex-row items-center">
-          <div class="lg:w-1/2 order-2 lg:order-1 mb-8 lg:mb-0 flex justify-center lg:justify-start" id="mainmundo">
-        <div id="particles-js"></div>
+                    <div class="lg:w-1/2 order-2 lg:order-1 mb-8 lg:mb-0 flex justify-center lg:justify-start relative" id="mainmundo">
+            <div id="particles-js"></div>
         <!-- Image -->
         <img :src="require('@/assets/resume.svg')" class="img-inicio w-full mx-auto lg:mx-0 lg:ml-auto" alt="...">
 
@@ -25,19 +25,21 @@
     <img :src="require('@/assets/resume.svg')"  class="w-2/3 mx-auto lg:hidden" id="worldmobile" style="display: none;" alt="...">
     <br>
     <br class='brsalto'>
-    <h2 class="text-4xl mt-4">
-        {{ $t('welcome-msg') }}
+    <h2 class="">
+
+        <span class="text-3xl azultittle">{{ $t('welcome-msg') }} Tecsify Prodigy</span>
     </h2>
     <br>
-    <p class="text-1xl mt-2">{{ $t('home-description') }}</p>
+    <p class="text-lg mt-2">{{ $t('home-description') }}</p>
     <hr class="my-4">
     <!-- Barra de navegación con banderas -->
     <nav class="py-2">
         <div class="container mx-auto flex justify-center flex-wrap py-2">
-            <small class="text-sm "> 
-                {{ $t('lenguage-select')}}
+            <small class="text-xs text-gray-400/100"> 
+                {{ $t('lenguage-select')}} 👇
             </small>
         </div>
+        
         <br>
         <div class="container mx-auto flex justify-center flex-wrap">
             <a href="/es/cv" class="zoom-menos"> <button class="mx-2 mb-4"><img :src="require('@/assets/flags/gt.webp')" :alt="$t('es-name')" class="h-16">
@@ -56,6 +58,7 @@
                 <span class="block text-center">{{ $t('pt-name')}}</span>
             </button></a>
         </div>
+ 
     </nav>
     <hr class="my-4">
 </div>
@@ -74,7 +77,7 @@
 import NavBar from '@/components/NavBar.vue';
 
 export default {
-  name: 'Index Page',
+  name: 'IndexPage',
   components: { NavBar },
   head() {
     return {
@@ -97,6 +100,144 @@ export default {
       ],
     };
   },
+  mounted() {
+    this.loadParticlesScript().then(() => {
+      this.setupParticles();
+    });
+  },
+  methods: {
+    loadParticlesScript() {
+      return new Promise((resolve, reject) => {
+        if (typeof window !== 'undefined' && !window.particlesJS) {
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+          script.onload = resolve;
+          script.onerror = reject;
+          document.body.appendChild(script);
+        } else {
+          resolve();
+        }
+      });
+    },
+    setupParticles() {
+      if (typeof window !== 'undefined' && window.particlesJS) {
+        window.particlesJS('particles-js', {
+
+            particles: {
+            number: {
+              value: 600,
+              density: {
+                enable: true,
+                value_area: 3400
+              }
+            },
+            color: {
+              value: "#030399"
+            },
+            shape: {
+              type: "circle",
+              stroke: {
+                width: 0,
+                color: "#030399"
+              },
+              polygon: {
+                nb_sides: 5
+              },
+              image: {
+                src: "img/github.svg",
+                width: 100,
+                height: 100
+              }
+            },
+            opacity: {
+              value: 1,
+              random: true,
+              anim: {
+                enable: true,
+                speed: 1,
+                opacity_min: 0,
+                sync: false
+              }
+            },
+            size: {
+              value: 5,
+              random: true,
+              anim: {
+                enable: false,
+                speed: 40,
+                size_min: 1.3,
+                sync: false
+              }
+            },
+            line_linked: {
+              enable: false,
+              distance: 900,
+              color: "#000",
+              opacity: 0.4,
+              width: 10
+            },
+            move: {
+              enable: true,
+              speed: 0.5,
+              direction: "center",
+              random: true,
+              straight: false,
+              out_mode: "out",
+              bounce: false,
+              attract: {
+                enable: true,
+                rotateX: 600,
+                rotateY: 600
+              }
+            }
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: {
+              onhover: {
+                enable: true,
+                mode: "bubble"
+              },
+              onclick: {
+                enable: true,
+                mode: "repulse"
+              },
+              resize: true
+            },
+            modes: {
+              grab: {
+                distance: 40,
+                line_linked: {
+                  opacity: 1
+                }
+              },
+              bubble: {
+                distance: 25,
+                size: 0,
+                duration: 2,
+                opacity: 0,
+                speed: 3
+              },
+              repulse: {
+                distance: 300,
+                duration: 0.4
+              },
+              push: {
+                particles_nb: 4
+              },
+              remove: {
+                particles_nb: 2
+              }
+            }
+          },
+          retina_detect: true
+        
+     
+
+        });
+      }
+    }
+  }
 }
 </script>
 <style lang="postcss" scoped>
@@ -138,42 +279,13 @@ export default {
     border: rgba(3, 3, 153, 0.8)
 }
 
-.sombra {
-    transition: 0.10s all ease-in-out;
-}
-
-.zoom-image {
-    transition: 0.20s all ease-in-out;
-}
-
-.zoom-menos {
-    transition: 0.30s all ease-in-out;
-}
 
 .img-inicio {
+    
 	animation: beat 1s infinite alternate;
 	transform-origin: center;
 }
 
-/* Heart beat animation */
-@keyframes beat{
-	to { transform: scale(0.985); }
-}
-
-
-.zoom-menos:hover {
-    transform: scale(0.885);
-}
-
-.sombra:hover {
-    transform: scale(1.005);
-    box-shadow: 0 0 11px rgba(3, 3, 153, 0.3);
-    border: rgba(3, 3, 153, 0.8)
-}
-
-.sombra:hover .zoom-image {
-    transform: rotate(-0.5deg) scale(1.05);
-}
 
 .brsalto {
     margin-bottom: 0.01rem;
@@ -200,6 +312,16 @@ export default {
     border: 0.40rem dashed #030399;
     border-radius: inherit;
     animation: spin 60s linear infinite;
+}
+
+
+#particles-js {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: -3rem;
+  top: -5rem;
+
 }
 
 @keyframes spin {
@@ -241,6 +363,12 @@ export default {
     }
 
 
-
 }
+
+.azultittle{
+  color: #030399;
+}
+
+
+
 </style>
